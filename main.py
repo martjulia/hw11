@@ -1,11 +1,12 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def main_page():
-    return 'Главная'
+    name = 'Nick'
+    return render_template('profile.html', name=name)
 
 
 app.run()
