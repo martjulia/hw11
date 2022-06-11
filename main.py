@@ -9,4 +9,9 @@ def main_page():
     return render_template('profile.html', name=name)
 
 
+@app.route('/skills/<skill>/')
+def skills_page(skill):
+    return render_template('skills.html', skill=skill)
+
+
 app.run()
