@@ -19,14 +19,18 @@ def get_candidate(candidate_id):
 def get_candidates_by_name(candidate_name):
     """"возвращает кандидатов по имени"""
     data = load_candidates_from_json()
+    candidates = []
     for candidate in data:
-        if candidate['name'] == candidate_name:
-            return candidate
+        if candidate_name in candidate['name']:
+            candidates.append(candidate)
+    return candidates
 
 
 def get_candidates_by_skill(skill_name):
     """возвращает кандидатов по навыку"""
     data = load_candidates_from_json()
+    candidates = []
     for candidate in data:
         if skill_name in candidate['skills']:
-            return candidate
+            candidates.append(candidate)
+    return candidates

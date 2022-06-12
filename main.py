@@ -7,13 +7,14 @@ app = Flask(__name__)
 @app.route('/')
 def main_page():
     candidates = load_candidates_from_json()
-    return render_template('list.html', x=candidates['name'])
+    return render_template('list.html', candidates=candidates)
 
 
-@app.route('/search/<candidate_name>')
-def search_by_name(name):
-    candidate = get_candidates_by_name(name)
-    return render_template('search.html', )
+@app.route('/search/<candidate_name>/')
+def search_by_name(candidate_name):
+    candidates = get_candidates_by_name(candidate_name)
+    counter = len(candidates)
+    return render_template('search.html', candidates=candidates, counter=counter)
 
 
 @app.route('/candidate/<int:uid>/')
@@ -24,6 +25,13 @@ def candidate_page(uid):
     picture = candidate['picture']
     skills = candidate['skills']
     return render_template('card.html', id=uid, name=name, position=position, picture=picture, skills=skills)
+
+
+@app.route('/skill/<skill_name>/')
+def search_by_skill(skill_name):
+    candidates = get_candidates_by_skill(skill_name)
+    counter = len(candidates)
+    return render_template('skill.html', skill=skill_name, candidates=candidates, counter=counter)
 
 
 app.run()

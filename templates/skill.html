@@ -6,10 +6,13 @@
 </head>
 <body>
 
-<h1>Найдено по имени {{name}}: {{counter}}</h1>
+<h1>Найдено со скиллом {{skill}}: {{counter}}</h1>
 
 {% for candidate in candidates %}
 <p><a href="/candidate/{{candidate['id']}}/" target="_blank">{{candidate['name']}}</a></p>
 {% endfor %}
+
+
+
 </body>
 </html>
