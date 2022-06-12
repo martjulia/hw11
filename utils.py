@@ -1,19 +1,32 @@
-def load_candidates_from_json(path):
+import json
+
+
+def load_candidates_from_json():
     """– возвращает список всех кандидатов"""
-    pass
+    with open('candidates.json', 'r', encoding='utf8') as file:
+        data = json.load(file)
+        return data
 
 
 def get_candidate(candidate_id):
     """возвращает одного кандидата по его id"""
-    pass
+    data = load_candidates_from_json()
+    for candidate in data:
+        if candidate['id'] == candidate_id:
+            return candidate
 
-    
+
 def get_candidates_by_name(candidate_name):
     """"возвращает кандидатов по имени"""
-    pass
+    data = load_candidates_from_json()
+    for candidate in data:
+        if candidate['name'] == candidate_name:
+            return candidate
 
 
 def get_candidates_by_skill(skill_name):
     """возвращает кандидатов по навыку"""
-    pass
-
+    data = load_candidates_from_json()
+    for candidate in data:
+        if skill_name in candidate['skills']:
+            return candidate
